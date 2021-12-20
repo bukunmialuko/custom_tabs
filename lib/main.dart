@@ -64,6 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Tab _buildCustomTab() {
+    const count = 1;
     return Tab(
       child: Container(
         color: Colors.greenAccent,
@@ -77,20 +78,31 @@ class _MyHomePageState extends State<MyHomePage> {
               top: 0,
               child: Container(
                 height: 20,
-                padding: EdgeInsets.only(left: 4, right: 4, top: 4, bottom: 4),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  shape: BoxShape.rectangle,
-                  color: Colors.red,
-                ),
+                // padding: count <= 99
+                //     ? EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 4)
+                //     : EdgeInsets.zero,
+                decoration: count <= 99
+                    ? BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.red,
+                      )
+                    : BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        shape: BoxShape.rectangle,
+                        color: Colors.red,
+                      ),
                 child: Stack(
                   fit: StackFit.loose,
-                  children: const [
-                    Center(
-                      child: Text(
-                        '8698',
-                        style: TextStyle(color: Colors.white, fontSize: 10),
-                        maxLines: 1,
+                  children: [
+                    Container(
+                      padding:
+                          EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 4),
+                      child: Center(
+                        child: Text(
+                          '$count',
+                          style: TextStyle(color: Colors.white, fontSize: 10),
+                          maxLines: 1,
+                        ),
                       ),
                     ),
                   ],
